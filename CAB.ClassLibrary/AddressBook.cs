@@ -59,12 +59,12 @@ namespace CAB.ClassLibrary
         {
             var sb = new StringBuilder();
 
-            sb.Append(Country);
+            sb.AppendFormat("{0}{1}", Country, Environment.NewLine);
             foreach (var contact in Contacts)
             {
                 sb.AppendFormat("   {0}:{1}:{2}", contact.Id, contact.FirstName, contact.LastName, contact.CreatedOn.ToShortDateString());
                 foreach (var note in contact.Notes)
-                    sb.AppendFormat("       {0}", note.Details);
+                    sb.AppendFormat("       {0}{1}", note.Details, Environment.NewLine);
             }
             _iLogger.WriteLog(LogLevels.INFO, sb.ToString());
         }

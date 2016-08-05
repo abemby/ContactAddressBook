@@ -18,7 +18,15 @@ namespace CAB.HostApplication
             var logger = new CAB.ConsoleLogger.ConsoleLogger();
 
             var abUK = new AddressBook(logger);
+            abUK.Country = Countries.UK;
+            abUK.AddContact(fnGetContacts());
+            abUK.AddContact(fnGetContacts());
+            abUK.Display();
+            Console.ReadKey();
+        }
 
+        private static IContact fnGetContacts()
+        {            
             //contact
             var ukContact = new Contact();
             ukContact.FirstName = "Andy";
@@ -32,11 +40,7 @@ namespace CAB.HostApplication
 
             ukContact.Notes = notes;
 
-            abUK.AddContact(ukContact);
-
-            abUK.Display();
-
-            Console.ReadKey();
+            return ukContact;
         }
     }
 }
